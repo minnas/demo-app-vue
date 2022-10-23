@@ -6,7 +6,7 @@
     :class="className"
   >
     <font-awesome-icon v-if="!noIcon" :icon="icon" size="lg" />
-    <span class="btn-label" v-if="!noText && label && label?.length > 1">{{
+    <span class="btn-label" v-if="!noText">{{
       label
     }}</span>
   </button>
@@ -27,7 +27,7 @@ export default defineComponent({
     className: String,
   },
   setup(props, { emit }) {
-    const noText = computed(() => props.type && props.type == ButtonType.ICON);
+    const noText = computed(() => props.type && props.type == ButtonType.ICON || !props.label);
     const noIcon = computed(() => props.type && props.type == ButtonType.TEXT);
     const icon = props.icon || faTimes;
 
