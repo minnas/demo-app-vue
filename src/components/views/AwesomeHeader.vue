@@ -5,9 +5,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed } from "@vue/reactivity";
 import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
 import { faSpider } from "@fortawesome/free-solid-svg-icons";
 
 export default defineComponent({
@@ -30,7 +28,8 @@ export default defineComponent({
   grid-column-gap: 1rem;
   & .awesome-header-icon {
     color: rgba(148, 104, 254);
-    font-size: 1.6rem;
+    font-size: 2.6rem;
+    filter: drop-shadow(14px 15px 0px rgba(255, 255, 255, 0.4));
   }
 }
 </style>

@@ -6,7 +6,9 @@
     :class="className"
   >
     <font-awesome-icon v-if="!noIcon" :icon="icon" size="lg" />
-    <span class="btn-label" v-if="!noText">{{ label }}</span>
+    <span class="btn-label" v-if="!noText && label && label?.length > 1">{{
+      label
+    }}</span>
   </button>
 </template>
 <script lang="ts">
@@ -44,10 +46,19 @@ button {
   outline: none;
   cursor: pointer;
   transition: all 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column-gap: 1rem;
   &.selected {
     color: rgba(148, 104, 254, 0.3);
+    &:hover {
+      cursor: not-allowed;
+      border: none;
+    }
   }
-  &:hover {
+
+  &:not([disabled]):hover {
     color: rgba(148, 104, 254, 0.5);
     font-size: 1.2rem;
   }

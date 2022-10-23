@@ -6,6 +6,7 @@
       @click="goWhereYouLike(item.path)"
       :class="['awesome-button', { selected: matches(item.path) }]"
       :icon="item.icon"
+      :disabled="matches(item.path) || false"
       :type="myBtnType"
     />
   </div>
@@ -65,18 +66,5 @@ export default defineComponent({
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  & button {
-    color: rgba(148, 104, 254);
-    outline: none;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    &.selected {
-      color: rgba(148, 104, 254, 0.3);
-    }
-    &:hover {
-      color: rgba(148, 104, 254, 0.5);
-      font-size: 1.2rem;
-    }
-  }
 }
 </style>

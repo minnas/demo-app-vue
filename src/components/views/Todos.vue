@@ -75,7 +75,7 @@ export default defineComponent({
     margin-top: 1rem;
     padding: 2rem;
     width: 80%;
-    border: 2px solid #fff;
+    border: 2px solid rgba(148, 104, 254, 0.4);
     border-bottom-left-radius: 18px;
     border-top-right-radius: 18px;
     font-size: 1.2rem;

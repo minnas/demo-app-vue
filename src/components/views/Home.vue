@@ -8,9 +8,15 @@
       ></textarea>
       <AwesomeButton @click="addTodo" :icon="faPlus" />
     </div>
-    <div class="card">Now {{ count }} todos</div>
     <div class="card">
-      <AwesomeButton @click="gotoTodos" :icon="faArrowRight" />
+      Now <span class="todo-count">{{ count }}</span> todos
+    </div>
+    <div class="card">
+      <AwesomeButton
+        @click="gotoTodos"
+        :icon="faArrowRight"
+        label="Goto Todos"
+      />
     </div>
   </div>
 </template>
@@ -68,5 +74,11 @@ export default defineComponent({
   padding: 1rem;
   font-size: 1.2rem;
   width: 80%;
+}
+.todo-count {
+  color: rgba(148, 104, 254);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 0.25rem;
 }
 </style>
