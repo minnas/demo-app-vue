@@ -11,7 +11,7 @@
       <awesome-button @click="add" :icon="faPlus" />
     </div>
     <div class="row-item">
-      Now <span class="todo-count">{{(todos as Todo[]).length}}</span> todos
+      Now <span class="todo-count">{{ (todos as Todo[]).length }}</span> todos
     </div>
     <div class="row-item">
       <awesome-button
@@ -39,7 +39,7 @@ export default defineComponent({
     const textAreaRef = ref();
     const todoText = ref("");
     const todos = useSelector((state) => state.todos);
-    
+
     const add = () => {
       if (todoText.value.trim().length < 1) {
         return;

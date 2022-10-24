@@ -5,7 +5,11 @@
         <font-awesome-icon size="lg" :icon="faSadCry" class="placehoder-icon" />
         <span>No todos here !!</span>
       </div>
-      <div class="awesome-todo-item" v-for="(item, i) of (todos as Todo[])" :key="i">
+      <div
+        class="awesome-todo-item"
+        v-for="(item, i) of (todos as Todo[])"
+        :key="i"
+      >
         <div class="awesome-display-mode">
           <font-awesome-icon
             :icon="faStickyNote"
@@ -41,7 +45,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const todos = useSelector((state) => state.todos);
     const dispatch = useDispath();
-    
+
     const remove = (todo: Todo) => {
       dispatch(removeTodo(todo));
     };

@@ -13,9 +13,7 @@ const todoSlice = createSlice({
       return state.filter((t) => t.id != action.payload.id);
     },
     updateTodo: (state, action) => {
-      const index = state.findIndex(
-        (t) => t.id == (action.payload as Todo).id
-      );
+      const index = state.findIndex((t) => t.id == (action.payload as Todo).id);
       if (index > -1) {
         state.splice(index, 1, action.payload as Todo);
       }

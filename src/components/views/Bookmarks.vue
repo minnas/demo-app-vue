@@ -1,7 +1,10 @@
 <template>
   <div class="awesome-bookmarks">
     <div class="awesome-bookmarks-list">
-      <div v-if="(bookmarks as Bookmark[]).length < 1" class="my-awesome-placeholder">
+      <div
+        v-if="(bookmarks as Bookmark[]).length < 1"
+        class="my-awesome-placeholder"
+      >
         <font-awesome-icon
           size="lg"
           :icon="faUserNinja"
