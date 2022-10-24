@@ -61,6 +61,7 @@ export default defineComponent({
     }
     &.spin:hover {
       cursor: pointer;
+      filter: drop-shadow(20px 0px 0px rgba(255, 255, 255, 0.7));
     }
   }
   & h1 {
