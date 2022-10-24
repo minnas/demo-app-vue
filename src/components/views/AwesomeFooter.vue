@@ -20,6 +20,8 @@ import {
   faStickyNote,
   faBook,
   faBookmark,
+  faUserFriends,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
 
@@ -48,6 +50,14 @@ export default defineComponent({
         path: "/bookmarks",
         icon: faBookmark,
       },
+      {
+        path: "/users",
+        icon: faUserFriends,
+      },
+      {
+        path: "/user",
+        icon: faUserPlus,
+      },
     ];
 
     const goWhereYouLike = (path: string) => {
@@ -55,7 +65,8 @@ export default defineComponent({
     };
     const matches = (s: string) => {
       return (
-        currentPath?.value && s.indexOf(currentPath?.value?.toString()) > -1
+        currentPath?.value &&
+        s.replace("/", "") === currentPath?.value?.toString()
       );
     };
     return {

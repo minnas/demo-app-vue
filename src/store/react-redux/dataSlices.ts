@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { Bookmark, Todo } from "@Types/types";
+import { Bookmark, Todo, User } from "@Types/types";
 
 const todoSlice = createSlice({
   name: "Todos",
@@ -42,10 +42,33 @@ const bookmarkSlice = createSlice({
   },
 });
 
+const userSlice = createSlice({
+  name: "Users",
+  initialState: [] as User[],
+  reducers: {
+    addUser: (state, action) => {
+      state.push({ ...action.payload, id: uuidv4() } as User);
+    },
+    removeUser: (state, action) => {
+      return state.filter((t) => t.id != action.payload.id);
+    },
+    updateUser: (state, action) => {
+      const index = state.findIndex(
+        (t) => t.id == (action.payload as Bookmark).id
+      );
+      if (index > -1) {
+        state.splice(index, 1, action.payload as User);
+      }
+    },
+  },
+});
+
 /**reducers */
 export const todoReducer = todoSlice.reducer;
 export const bookmarkReducer = bookmarkSlice.reducer;
+export const userReducer = userSlice.reducer;
 /**actions */
 export const { addTodo, updateTodo, removeTodo } = todoSlice.actions;
 export const { addBookmark, updateBookmark, removeBookmark } =
   bookmarkSlice.actions;
+export const { addUser, updateUser, removeUser } = userSlice.actions;

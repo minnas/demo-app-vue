@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, ref } from "@vue/reactivity";
+import { ref } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { Todo } from "@Types/types";
 import { faPlus, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -46,6 +46,7 @@ export default defineComponent({
       }
       const todo = { title: todoText.value } as Todo;
       dispatch(addTodo(todo));
+
       todoText.value = "";
     };
     const gotoTodos = () => {

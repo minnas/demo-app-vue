@@ -17,3 +17,11 @@ export type Bookmark = SavedItem & {
 export type Todo = SavedItem & {
   done?: boolean;
 };
+
+export type User = Pick<Item, "id"> & {
+  firstName: string;
+  lastName: string;
+  nick?: string;
+  email: string;
+  password?: string;
+};

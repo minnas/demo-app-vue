@@ -2,11 +2,12 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 import storage from "redux-persist/lib/storage";
-import { bookmarkReducer, todoReducer } from "./dataSlices";
+import { bookmarkReducer, todoReducer, userReducer } from "./dataSlices";
 
 const rootReducer = combineReducers({
   todos: todoReducer,
   bookmarks: bookmarkReducer,
+  users: userReducer,
 });
 
 type RootReducer = ReturnType<typeof rootReducer>;
