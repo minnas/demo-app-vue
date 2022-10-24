@@ -41,7 +41,7 @@ export default defineComponent({
     font-size: 2.5rem;
     line-height: 2.6rem;
     margin: 0;
-    padding-bottom: 5px;
+    padding: 5px 0;
     border-bottom: 4px dashed rgba(148, 104, 254, 0.6);
   }
 }

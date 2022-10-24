@@ -102,6 +102,7 @@ export default defineComponent({
     align-items: center;
     grid-column-gap: 1rem;
     font-size: 1.6rem;
+    min-height: 100px;
   }
   & .placehoder-icon {
     color: rgba(148, 104, 254);
