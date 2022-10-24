@@ -9,18 +9,20 @@
       <h1>One small Demo App</h1>
       <div class="bottom-line">(start/stop snowflake by click)</div>
     </div>
-    <font-awesome-icon
-      :icon="faSnowflake"
-      size="lg"
-      @click="toggleSpin"
-      :spin="spin"
-      class="awesome-header-icon spin"
-    />
-    <awesome-button
-      :icon="faLightbulb"
-      @click="toggleLight"
-      :class="['awesome-lighting', { lightOff: lightOff }]"
-    />
+    <div class="right-side">
+      <font-awesome-icon
+        :icon="faSnowflake"
+        size="lg"
+        @click="toggleSpin"
+        :spin="spin"
+        class="awesome-header-icon spin"
+      />
+      <awesome-button
+        :icon="faLightbulb"
+        @click="toggleLight"
+        :class="['awesome-lighting', { lightOff: lightOff }]"
+      />
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -102,6 +104,12 @@ export default defineComponent({
     &.lightOff {
       color: #a9a9a9;
     }
+  }
+  & .right-side {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column-gap: 1rem;
   }
 }
 </style>
