@@ -1,23 +1,31 @@
 <template>
-  <div class="all-awesome-todos">
-    <div class="awesome-todo-list">
-      <div v-if="todos.length < 1" class="my-awesome-placeholder">
-        <font-awesome-icon size="lg" :icon="faSadCry" class="placehoder-icon" />
-        <span>No todos here !!</span>
+  <div class="awesome-bookmarks">
+    <div class="awesome-bookmarks-list">
+      <div v-if="bookmarks.length < 1" class="my-awesome-placeholder">
+        <font-awesome-icon
+          size="lg"
+          :icon="faUserNinja"
+          class="placehoder-icon"
+        />
+        <span>No bookmarks here !!</span>
       </div>
-      <div class="awesome-todo-item" v-for="(item, i) of todos" :key="i">
+      <div
+        class="awesome-bookmarks-item"
+        v-for="(item, i) of bookmarks"
+        :key="i"
+      >
         <div class="awesome-display-mode">
           <font-awesome-icon
-            :icon="faStickyNote"
+            :icon="faBookAtlas"
             size="lg"
             class="awesome-icon"
           />
           <div>{{ item.title }}</div>
           <div class="some-actions">
             <awesome-button
-              :icon="faBroom"
+              :icon="faPaintBrush"
               class="remove-awesome-todo"
-              @click="removeTodo(item)"
+              @click="removeBookmark(item)"
             />
           </div>
         </div>
@@ -29,11 +37,11 @@
 import { computed } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { useStore } from "@Store/store";
-import { Todo } from "@Types/types";
+import { Bookmark } from "@Types/types";
 import {
-  faStickyNote,
-  faBroom,
-  faSadCry,
+  faBookAtlas,
+  faPaintBrush,
+  faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default defineComponent({
@@ -41,34 +49,34 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = useStore();
 
-    const todos = computed(() => store.state.todos);
+    const bookmarks = computed(() => store.state.bookmarks);
 
-    const removeTodo = (todo: Todo) => {
-      store.dispatch("removeTodo", todo);
+    const removeBookmark = (bookmark: Bookmark) => {
+      store.dispatch("removeBookmark", bookmark);
     };
 
     return {
-      todos,
-      removeTodo,
-      faStickyNote,
-      faBroom,
-      faSadCry,
+      bookmarks,
+      removeBookmark,
+      faBookAtlas,
+      faPaintBrush,
+      faUserNinja,
     };
   },
 });
 </script>
 <style lang="scss" scoped>
-.all-awesome-todos {
+.awesome-bookmarks {
   transition: all 0.25s ease;
   width: 60vw;
-  & .awesome-todo-list {
+  & .awesome-bookmarks-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: all 0.25s ease;
   }
-  & .awesome-todo-item {
+  & .awesome-bookmarks-item {
     margin-top: 1rem;
     padding: 2rem;
     width: 80%;

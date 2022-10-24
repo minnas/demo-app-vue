@@ -32,6 +32,8 @@ export default defineComponent({
   flex: 8;
   overflow: scroll;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);

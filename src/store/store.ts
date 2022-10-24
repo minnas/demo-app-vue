@@ -60,7 +60,7 @@ export const store = createStore<State>({
   },
   actions: {
     addBookmark({ state, commit }, bookmark: Bookmark) {
-      commit("removeBookmark", bookmark);
+      commit("addBookmark", bookmark);
     },
     removeBookmark({ state, commit }, bookmark: Bookmark) {
       commit("removeBookmark", bookmark);

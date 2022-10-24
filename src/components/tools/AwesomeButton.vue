@@ -6,9 +6,7 @@
     :class="className"
   >
     <font-awesome-icon v-if="!noIcon" :icon="icon" size="lg" />
-    <span class="btn-label" v-if="!noText">{{
-      label
-    }}</span>
+    <span class="btn-label" v-if="!noText">{{ label }}</span>
   </button>
 </template>
 <script lang="ts">
@@ -27,7 +25,9 @@ export default defineComponent({
     className: String,
   },
   setup(props, { emit }) {
-    const noText = computed(() => props.type && props.type == ButtonType.ICON || !props.label);
+    const noText = computed(
+      () => (props.type && props.type == ButtonType.ICON) || !props.label
+    );
     const noIcon = computed(() => props.type && props.type == ButtonType.TEXT);
     const icon = props.icon || faTimes;
 
@@ -57,7 +57,13 @@ button {
       border: none;
     }
   }
-
+  &[disabled]:not(.selected) {
+    opacity: 0.5;
+    &:hover {
+      cursor: not-allowed;
+      border: none;
+    }
+  }
   &:not([disabled]):hover {
     color: rgba(148, 104, 254, 0.5);
     font-size: 1.2rem;

@@ -4,6 +4,7 @@ export type Item = {
   userId?: string;
   body?: string;
 };
+export type RawItem = Omit<Item, "id"> & {};
 
 type SavedItem = Item & {
   externalId: string;

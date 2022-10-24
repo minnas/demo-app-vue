@@ -5,14 +5,16 @@
         class="todo-title-area"
         v-model="todoText"
         placeholder="write here todo task"
+        @keydown="saveTodo"
+        ref="textAreaRef"
       ></textarea>
-      <AwesomeButton @click="addTodo" :icon="faPlus" />
+      <awesome-button @click="addTodo" :icon="faPlus" />
     </div>
-    <div class="card">
+    <div class="row-item">
       Now <span class="todo-count">{{ count }}</span> todos
     </div>
-    <div class="card">
-      <AwesomeButton
+    <div class="row-item">
+      <awesome-button
         @click="gotoTodos"
         :icon="faArrowRight"
         label="Goto Todos"
@@ -26,7 +28,6 @@ import { defineComponent } from "vue";
 import { useStore } from "@Store/store";
 import { Todo } from "@Types/types";
 import { faPlus, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { default as AwesomeButton } from "@Tools/AwesomeButton.vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
@@ -34,7 +35,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = useStore();
     const router = useRouter();
-
+    const textAreaRef = ref();
     const todoText = ref("");
     const addTodo = () => {
       const todo = { title: todoText.value } as Todo;
@@ -46,6 +47,15 @@ export default defineComponent({
     };
     const count = computed(() => store.state.todos.length);
 
+    const saveTodo = (e: KeyboardEvent) => {
+      const code = e.key;
+      if (code === "Enter") {
+        addTodo();
+        textAreaRef?.value?.blur();
+      }
+      return false;
+    };
+
     return {
       count,
       addTodo,
@@ -53,10 +63,9 @@ export default defineComponent({
       faPlus,
       todoText,
       faArrowRight,
+      saveTodo,
+      textAreaRef,
     };
-  },
-  components: {
-    AwesomeButton,
   },
 });
 </script>
@@ -66,6 +75,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  grid-row-gap: 1rem;
   & .new-awesome-todo {
     display: flex;
   }
@@ -73,7 +83,7 @@ export default defineComponent({
 .todo-title-area {
   padding: 1rem;
   font-size: 1.2rem;
-  width: 80%;
+  width: 60vw;
 }
 .todo-count {
   color: rgba(148, 104, 254);

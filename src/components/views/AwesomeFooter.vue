@@ -1,6 +1,6 @@
 <template>
   <div class="all-awesome-footer-links">
-    <AwesomeButton
+    <awesome-button
       v-for="(item, i) of myPaths"
       :key="i"
       @click="goWhereYouLike(item.path)"
@@ -15,16 +15,17 @@
 import { computed } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
-import { faHome, faStickyNote } from "@fortawesome/free-solid-svg-icons";
-import { default as AwesomeButton } from "@Tools/AwesomeButton.vue";
+import {
+  faHome,
+  faStickyNote,
+  faBook,
+  faBookmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
 
 export default defineComponent({
   props: {
     text: String,
-  },
-  components: {
-    AwesomeButton,
   },
   setup(props, { emit }) {
     const router = useRouter();
@@ -38,6 +39,14 @@ export default defineComponent({
       {
         path: "/todos",
         icon: faStickyNote,
+      },
+      {
+        path: "/posts",
+        icon: faBook,
+      },
+      {
+        path: "/bookmarks",
+        icon: faBookmark,
       },
     ];
 

@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "@Views/Home.vue";
 import Todos from "@Views/Todos.vue";
+import Posts from "@Views/Posts.vue";
+import Bookmarks from "@Views/Bookmarks.vue";
 
 export const routerHistory = createWebHistory("post-app");
 
@@ -23,6 +25,16 @@ export const router = createRouter({
       name: "todos",
       path: "/todos",
       component: Todos,
+    },
+    {
+      name: "posts",
+      path: "/posts",
+      component: Posts,
+    },
+    {
+      name: "bookmarks",
+      path: "/bookmarks",
+      component: Bookmarks,
     },
   ],
 });
