@@ -1,6 +1,10 @@
 <template>
   <div class="awesome-header">
-    <font-awesome-icon :icon="faSpider" size="lg" class="awesome-header-icon" />
+    <font-awesome-icon
+      :icon="faSpider"
+      size="lg"
+      class="awesome-header-icon spider"
+    />
     <div>
       <h1>One small Demo App</h1>
       <div class="bottom-line">(start/stop snowflake by click)</div>
@@ -47,9 +51,13 @@ export default defineComponent({
   & .awesome-header-icon {
     color: rgba(148, 104, 254);
     font-size: 3rem;
+    transition: all 0.25s ease;
     &:not(.spin) {
       filter: drop-shadow(14px 15px 0px rgba(255, 255, 255, 0.4));
       font-size: 2.6rem;
+    }
+    &.spider:hover {
+      filter: drop-shadow(30px 30px 0px rgba(255, 255, 255, 0.4));
     }
     &.spin:hover {
       cursor: pointer;
