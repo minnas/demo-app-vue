@@ -88,6 +88,7 @@ export default defineComponent({
       details.firstName = "";
       details.lastName = "";
       details.nick = "";
+      details.email = "";
       details.password = "";
     };
     const isValid = (value: string | undefined) => {
