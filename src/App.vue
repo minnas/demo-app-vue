@@ -1,5 +1,5 @@
 <template>
-  <h1 class="awesome-title-or-footer"><AwesomeHeader title="title" /></h1>
+  <div class="awesome-title-or-footer"><AwesomeHeader title="title" /></div>
   <div class="awesome-content"><router-view></router-view></div>
   <div class="awesome-title-or-footer"><AwesomeFooter /></div>
 </template>
@@ -27,6 +27,10 @@ export default defineComponent({
 .awesome-title-or-footer {
   flex: 1;
   width: 100%;
+  padding: 0.5rem 0;
+  margin: 0;
+  align-items: center;
+  background-color: rgba(148, 104, 254, 0.1);
 }
 .awesome-content {
   flex: 8;

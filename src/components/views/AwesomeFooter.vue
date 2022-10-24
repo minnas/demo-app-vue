@@ -75,5 +75,6 @@ export default defineComponent({
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  height: 100%;
 }
 </style>
