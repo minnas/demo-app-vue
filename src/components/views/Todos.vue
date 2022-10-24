@@ -1,11 +1,11 @@
 <template>
   <div class="all-awesome-todos">
     <div class="awesome-todo-list">
-      <div v-if="todos.length < 1" class="my-awesome-placeholder">
+      <div v-if="(todos as Todo[]).length < 1" class="my-awesome-placeholder">
         <font-awesome-icon size="lg" :icon="faSadCry" class="placehoder-icon" />
         <span>No todos here !!</span>
       </div>
-      <div class="awesome-todo-item" v-for="(item, i) of todos" :key="i">
+      <div class="awesome-todo-item" v-for="(item, i) of (todos as Todo[])" :key="i">
         <div class="awesome-display-mode">
           <font-awesome-icon
             :icon="faStickyNote"
@@ -17,7 +17,7 @@
             <awesome-button
               :icon="faBroom"
               class="remove-awesome-todo"
-              @click="removeTodo(item)"
+              @click="remove(item)"
             />
           </div>
         </div>
@@ -26,30 +26,29 @@
   </div>
 </template>
 <script lang="ts">
-import { computed } from "@vue/reactivity";
 import { defineComponent } from "vue";
-import { useStore } from "@Store/store";
 import { Todo } from "@Types/types";
 import {
   faStickyNote,
   faBroom,
   faSadCry,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispath, useSelector } from "@Store/react-redux/utils";
+import { removeTodo } from "@Store/react-redux/dataSlices";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
-    const store = useStore();
-
-    const todos = computed(() => store.state.todos);
-
-    const removeTodo = (todo: Todo) => {
-      store.dispatch("removeTodo", todo);
+    const todos = useSelector((state) => state.todos);
+    const dispatch = useDispath();
+    
+    const remove = (todo: Todo) => {
+      dispatch(removeTodo(todo));
     };
 
     return {
       todos,
-      removeTodo,
+      remove,
       faStickyNote,
       faBroom,
       faSadCry,

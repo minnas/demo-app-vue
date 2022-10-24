@@ -8,10 +8,10 @@
         @keydown="saveTodo"
         ref="textAreaRef"
       ></textarea>
-      <awesome-button @click="addTodo" :icon="faPlus" />
+      <awesome-button @click="add" :icon="faPlus" />
     </div>
     <div class="row-item">
-      Now <span class="todo-count">{{ count }}</span> todos
+      Now <span class="todo-count">{{(todos as Todo[]).length}}</span> todos
     </div>
     <div class="row-item">
       <awesome-button
@@ -25,48 +25,50 @@
 <script lang="ts">
 import { computed, ref } from "@vue/reactivity";
 import { defineComponent } from "vue";
-import { useStore } from "@Store/store";
 import { Todo } from "@Types/types";
 import { faPlus, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "vue-router";
+import { useDispath, useSelector } from "@Store/react-redux/utils";
+import { addTodo } from "@Store/react-redux/dataSlices";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
-    const store = useStore();
+    const dispatch = useDispath();
     const router = useRouter();
     const textAreaRef = ref();
     const todoText = ref("");
-    const addTodo = () => {
+    const todos = useSelector((state) => state.todos);
+    
+    const add = () => {
       if (todoText.value.trim().length < 1) {
         return;
       }
       const todo = { title: todoText.value } as Todo;
-      store.dispatch("addTodo", todo);
+      dispatch(addTodo(todo));
       todoText.value = "";
     };
     const gotoTodos = () => {
       router.push("/todos");
     };
-    const count = computed(() => store.state.todos.length);
 
     const saveTodo = (e: KeyboardEvent) => {
       const code = e.key;
       if (code === "Enter") {
-        addTodo();
+        add();
         textAreaRef?.value?.blur();
       }
       return false;
     };
 
     return {
-      count,
-      addTodo,
+      add,
       gotoTodos,
       faPlus,
       todoText,
       faArrowRight,
       saveTodo,
+      todos,
       textAreaRef,
     };
   },

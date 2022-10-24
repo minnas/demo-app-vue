@@ -34,7 +34,7 @@
             <awesome-button
               :icon="faBookmark"
               class="add-awesome-bookmark"
-              @click="addBookmark(item)"
+              @click="add(item)"
               :disabled="bookmarkBtnDisabled(item.id)"
             />
           </div>
@@ -44,9 +44,8 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, ref } from "@vue/reactivity";
+import { ref } from "@vue/reactivity";
 import { defineComponent, onMounted } from "vue";
-import { useStore } from "@Store/store";
 import { Item, RawItem, Bookmark } from "@Types/types";
 import {
   faBookOpen,
@@ -58,20 +57,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { search } from "@Api/api";
 import { useRouter } from "vue-router";
+import { useDispath, useSelector } from "@Store/react-redux/utils";
+import { addBookmark } from "@Store/react-redux/dataSlices";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
-    const store = useStore();
     const bookmarkAdded = ref(false);
     const posts = ref([] as Item[]);
     const loading = ref(true);
     const router = useRouter();
-    const bookmarks = computed(() => store.state.bookmarks);
+    const bookmarks = useSelector((state) => state.bookmarks);
+    const dispatch = useDispath();
 
     const bookmarkBtnDisabled = (id: string) => {
       if (
-        bookmarks.value.find(
+        (bookmarks.value as Bookmark[]).find(
           (b: Bookmark) => b.externalId.toString() === id.toString()
         )
       ) {
@@ -79,9 +80,9 @@ export default defineComponent({
       }
       return false;
     };
-    const addBookmark = (item: Item) => {
+    const add = (item: Item) => {
       const bookmark = { ...(item as RawItem), externalId: item.id };
-      store.dispatch("addBookmark", bookmark);
+      dispatch(addBookmark(bookmark));
       bookmarkAdded.value = true;
       setTimeout(() => {
         bookmarkAdded.value = false;
@@ -105,7 +106,7 @@ export default defineComponent({
     };
 
     return {
-      addBookmark,
+      add,
       faBookOpen,
       faBookmark,
       faSpinner,

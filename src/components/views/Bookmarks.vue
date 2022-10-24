@@ -1,7 +1,7 @@
 <template>
   <div class="awesome-bookmarks">
     <div class="awesome-bookmarks-list">
-      <div v-if="bookmarks.length < 1" class="my-awesome-placeholder">
+      <div v-if="(bookmarks as Bookmark[]).length < 1" class="my-awesome-placeholder">
         <font-awesome-icon
           size="lg"
           :icon="faUserNinja"
@@ -11,7 +11,7 @@
       </div>
       <div
         class="awesome-bookmarks-item"
-        v-for="(item, i) of bookmarks"
+        v-for="(item, i) of (bookmarks as Bookmark[])"
         :key="i"
       >
         <div class="awesome-display-mode">
@@ -25,7 +25,7 @@
             <awesome-button
               :icon="faPaintBrush"
               class="remove-awesome-todo"
-              @click="removeBookmark(item)"
+              @click="remove(item)"
             />
           </div>
         </div>
@@ -34,30 +34,29 @@
   </div>
 </template>
 <script lang="ts">
-import { computed } from "@vue/reactivity";
 import { defineComponent } from "vue";
-import { useStore } from "@Store/store";
 import { Bookmark } from "@Types/types";
 import {
   faBookAtlas,
   faPaintBrush,
   faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispath, useSelector } from "@Store/react-redux/utils";
+import { removeBookmark } from "@Store/react-redux/dataSlices";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
-    const store = useStore();
+    const bookmarks = useSelector((state) => state.bookmarks);
+    const dispatch = useDispath();
 
-    const bookmarks = computed(() => store.state.bookmarks);
-
-    const removeBookmark = (bookmark: Bookmark) => {
-      store.dispatch("removeBookmark", bookmark);
+    const remove = (bookmark: Bookmark) => {
+      dispatch(removeBookmark(bookmark));
     };
 
     return {
       bookmarks,
-      removeBookmark,
+      remove,
       faBookAtlas,
       faPaintBrush,
       faUserNinja,

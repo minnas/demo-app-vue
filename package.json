@@ -12,13 +12,12 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@reduxjs/toolkit": "^1.8.6",
     "@types/uuid": "^8.3.4",
-    "flatted": "^3.2.7",
-    "path": "^0.12.7",
+    "redux-persist": "^6.0.0",
     "uuid": "^9.0.0",
     "vue": "^3.2.37",
-    "vue-router": "4",
-    "vuex": "^4.0.2"
+    "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "^18.11.4",
