@@ -30,7 +30,6 @@ import {
   faSpider,
   faLightbulb,
 } from "@fortawesome/free-solid-svg-icons";
-import { computed } from "@vue/reactivity";
 
 export default defineComponent({
   props: {
