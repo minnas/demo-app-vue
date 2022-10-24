@@ -1,5 +1,13 @@
 <template>
   <div class="awesome-posts">
+    <div class="row-item">
+      <awesome-button
+        @click="gotoBookmarks"
+        :icon="faBookAtlas"
+        label="Goto Bookmarks"
+        v-if="!loading"
+      />
+    </div>
     <div class="awesome-post-list">
       <div v-if="loading && posts.length < 1" class="my-awesome-placeholder">
         <font-awesome-icon
@@ -32,13 +40,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row-item">
-      <awesome-button
-        @click="gotoBookmarks"
-        :icon="faBookAtlas"
-        label="Goto Bookmarks"
-      />
     </div>
   </div>
 </template>
@@ -158,7 +159,7 @@ export default defineComponent({
       border-radius: 5px;
       position: absolute;
       width: 30vw;
-      top: 10vh;
+      top: 20vh;
       height: 45px;
       z-index: 100;
       & span {
@@ -169,5 +170,10 @@ export default defineComponent({
   & .placehoder-icon {
     color: rgba(148, 104, 254);
   }
+}
+.row-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 </style>

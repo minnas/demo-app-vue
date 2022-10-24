@@ -38,6 +38,9 @@ export default defineComponent({
     const textAreaRef = ref();
     const todoText = ref("");
     const addTodo = () => {
+      if (todoText.value.trim().length < 1) {
+        return;
+      }
       const todo = { title: todoText.value } as Todo;
       store.dispatch("addTodo", todo);
       todoText.value = "";
