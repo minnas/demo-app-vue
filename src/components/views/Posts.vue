@@ -70,9 +70,14 @@ export default defineComponent({
     const bookmarks = computed(() => store.state.bookmarks);
 
     const bookmarkBtnDisabled = (id: string) => {
-      return bookmarks.value.find((b: Bookmark) => {
-        return b.externalId.toString() === id.toString();
-      });
+      if (
+        bookmarks.value.find(
+          (b: Bookmark) => b.externalId.toString() === id.toString()
+        )
+      ) {
+        return true;
+      }
+      return false;
     };
     const addBookmark = (item: Item) => {
       const bookmark = { ...(item as RawItem), externalId: item.id };
@@ -159,7 +164,7 @@ export default defineComponent({
       border-radius: 5px;
       position: absolute;
       width: 30vw;
-      top: 20vh;
+      top: 30%;
       height: 45px;
       z-index: 100;
       & span {

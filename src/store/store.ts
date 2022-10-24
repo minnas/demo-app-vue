@@ -1,6 +1,5 @@
 import { InjectionKey } from "vue";
-import { createStore, useStore as baseUseStore, Store, Payload } from "vuex";
-import VuexPersistence from "vuex-persist";
+import { createStore, useStore as baseUseStore, Store } from "vuex";
 import { Bookmark, Todo } from "@Types/types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,7 +7,6 @@ import { v4 as uuidv4 } from "uuid";
 export interface State {
   todos: Todo[];
   bookmarks: Bookmark[];
-  //plugins: any;
 }
 
 // Store key + simplified store usage
@@ -17,16 +15,10 @@ export function useStore() {
   return baseUseStore(storeKey);
 }
 
-// create store with local storage supppot
-/*const vuexLocal = new VuexPersistence<State>({
-    storage: window.localStorage
-});*/
-
 export const store = createStore<State>({
   state: {
     todos: [],
     bookmarks: [],
-    //plugins: [vuexLocal.plugin]
   },
   mutations: {
     addTodo(state, todo: Todo) {
