@@ -44,8 +44,7 @@
   </div>
 </template>
 <script lang="ts">
-import { ref } from "@vue/reactivity";
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { Item, RawItem, Bookmark } from "@Types/types";
 import {
   faBookOpen,

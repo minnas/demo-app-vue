@@ -19,7 +19,8 @@
       "@Tools/*": ["./src/components/tools/*"],
       "@Types/*": ["./src/types/*"],
       "@Api/*": ["./src/api/*"],
-      "@Assets/*": ["./src/assets/*"]
+      "@Assets/*": ["./src/assets/*"],
+      "@Provider/*": ["./src/provider/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

@@ -12,14 +12,14 @@
   </div>
 </template>
 <script lang="ts">
-import { computed } from "@vue/reactivity";
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import { useRouter } from "vue-router";
 import {
   faHome,
   faStickyNote,
   faBook,
   faBookmark,
+  faMessage,
 } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
 
@@ -47,6 +47,10 @@ export default defineComponent({
       {
         path: "/bookmarks",
         icon: faBookmark,
+      },
+      {
+        path: "/items",
+        icon: faMessage,
       },
     ];
 
