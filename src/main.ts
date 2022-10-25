@@ -9,6 +9,11 @@ import { default as AwesomeButton } from "@Tools/AwesomeButton.vue";
 import { ItemStoreProvider, PROVIDER_KEY } from "@Provider/provider";
 import { UserProvider, USER_PROVIDER_KEY } from "@Provider/user";
 
+router.beforeEach(async (to, from) => {
+  if (from.name === "user") {
+    UserProvider.clearUser();
+  }
+});
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
   .component("awesome-button", AwesomeButton)
