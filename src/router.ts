@@ -6,6 +6,7 @@ import Posts from "@Views/Posts.vue";
 import Bookmarks from "@Views/Bookmarks.vue";
 import Users from "@Views/Users.vue";
 import User from "@Views/User.vue";
+import Items from "@Views/Items.vue";
 
 export const routerHistory = createWebHistory("post-app");
 
@@ -47,6 +48,16 @@ export const router = createRouter({
       name: "user",
       path: "/user",
       component: User,
+    },
+    /*{
+      name: "user",
+      path: "/user",
+      component: User,
+    },*/
+    {
+      name: "items",
+      path: "/items",
+      component: Items,
     },
   ],
 });

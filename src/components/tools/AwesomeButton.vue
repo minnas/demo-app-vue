@@ -10,8 +10,7 @@
   </button>
 </template>
 <script lang="ts">
-import { computed } from "@vue/reactivity";
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ButtonType } from "./settings";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";

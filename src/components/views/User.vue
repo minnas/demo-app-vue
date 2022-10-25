@@ -5,7 +5,7 @@
       <awesome-button @click="close()" :icon="faTimes" :type="myBtnType" />
     </div>
     <div class="row">
-      <label for="firstname">FirstName:</label>
+      <label for="firstname">First Name:</label>
       <input
         name="firstname"
         type="text"
@@ -14,7 +14,7 @@
       />
     </div>
     <div class="row">
-      <label for="lastname">LastName:</label>
+      <label for="lastname">Last Name:</label>
       <input
         name="lastname"
         type="text"
@@ -45,21 +45,21 @@
         :icon="faPlus"
         :type="myBtnType"
         :disabled="!isDetailsValid"
-        label="Add"
+        label="Save"
       />
       <awesome-button @click="clear()" :icon="faRepeat" :type="myBtnType" />
     </div>
   </div>
 </template>
 <script lang="ts">
-import { computed, reactive, toRefs } from "@vue/reactivity";
-import { defineComponent } from "vue";
+import { defineComponent, computed, reactive, toRefs, inject } from "vue";
 import { useRouter } from "vue-router";
 import { faPlus, faRepeat, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
 import { useDispath } from "@Store/react-redux/utils";
-import { addUser } from "@Store/react-redux/dataSlices";
+import { addUser, updateUser } from "@Store/react-redux/dataSlices";
 import { User } from "@Types/types";
+import { IUserProvider, USER_PROVIDER_KEY } from "@Provider/user";
 
 export default defineComponent({
   props: {
@@ -68,16 +68,24 @@ export default defineComponent({
   setup(props, { emit }) {
     const router = useRouter();
     const dispatch = useDispath();
+    const userProvider = inject<IUserProvider>(USER_PROVIDER_KEY);
+
     const details = reactive({
-      firstName: "",
-      lastName: "",
-      nick: "",
-      email: "",
-      password: "",
+      firstName: userProvider?.getUser()?.firstName || "",
+      lastName: userProvider?.getUser()?.lastName || "",
+      nick: userProvider?.getUser()?.nick || "",
+      email: userProvider?.getUser()?.email || "",
+      password: userProvider?.getUser()?.password || "",
     });
 
     const add = () => {
-      dispatch(addUser(details as User));
+      const id = userProvider?.getUser().id;
+      if (id) {
+        dispatch(updateUser({ ...details, id: id } as User));
+      } else {
+        dispatch(addUser(details as User));
+      }
+      userProvider?.clearUser();
       router.push("/users");
     };
 

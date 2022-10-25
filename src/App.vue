@@ -38,7 +38,7 @@ export default defineComponent({
   width: 100%;
   display: flex;
   justify-content: center;
-  border-left: 3px dashed #9468fe
+  border-left: 3px dashed #9468fe;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);

@@ -27,7 +27,12 @@
           <div>{{ item.firstName }} {{ item.lastName }}</div>
           <div class="some-actions">
             <awesome-button
-              :icon="faPaintBrush"
+              :icon="faEdit"
+              class="remove-awesome-todo"
+              @click="edit(item)"
+            />
+            <awesome-button
+              :icon="faTimes"
               class="remove-awesome-todo"
               @click="remove(item)"
             />
@@ -38,10 +43,11 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, inject } from "vue";
 import { User } from "@Types/types";
 import {
-  faPaintBrush,
+  faEdit,
+  faTimes,
   faUserFriends,
   faUserNinja,
   faUserPlus,
@@ -49,6 +55,7 @@ import {
 import { useDispath, useSelector } from "@Store/react-redux/utils";
 import { removeUser } from "@Store/react-redux/dataSlices";
 import { useRouter } from "vue-router";
+import { IUserProvider, USER_PROVIDER_KEY } from "@Provider/user";
 
 export default defineComponent({
   props: {},
@@ -56,9 +63,14 @@ export default defineComponent({
     const router = useRouter();
     const users = useSelector((state) => state.users);
     const dispatch = useDispath();
+    const userProvider = inject<IUserProvider>(USER_PROVIDER_KEY);
 
     const remove = (user: User) => {
       dispatch(removeUser(user));
+    };
+    const edit = (user: User) => {
+      userProvider?.setUser(user);
+      router.push("/user");
     };
 
     const newUser = () => {
@@ -68,11 +80,13 @@ export default defineComponent({
     return {
       users,
       remove,
-      faPaintBrush,
+      faTimes,
       faUserFriends,
       faUserNinja,
       faUserPlus,
+      faEdit,
       newUser,
+      edit,
     };
   },
 });
@@ -116,6 +130,12 @@ export default defineComponent({
   }
   & .placehoder-icon {
     color: rgba(148, 104, 254);
+  }
+  & .some-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    grid-column-gap: 0.5rem;
   }
 }
 .row-item {

@@ -12,8 +12,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed } from "@vue/reactivity";
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import { useRouter } from "vue-router";
 import {
   faHome,
@@ -22,6 +21,7 @@ import {
   faBookmark,
   faUserFriends,
   faUserPlus,
+  faMessage,
 } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
 
@@ -58,6 +58,7 @@ export default defineComponent({
         path: "/user",
         icon: faUserPlus,
       },
+      { path: "/items", icon: faMessage },
     ];
 
     const goWhereYouLike = (path: string) => {
