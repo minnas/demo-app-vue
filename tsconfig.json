@@ -20,7 +20,8 @@
       "@Types/*": ["./src/types/*"],
       "@Api/*": ["./src/api/*"],
       "@Assets/*": ["./src/assets/*"],
-      "@Provider/*": ["./src/provider/*"]
+      "@Provider/*": ["./src/provider/*"],
+      "@Utils/*": ["./src/Utils/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

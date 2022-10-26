@@ -20,8 +20,10 @@ import {
   faBook,
   faBookmark,
   faMessage,
+  faDharmachakra,
 } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
+import { NavItem } from "@Types/types";
 
 export default defineComponent({
   props: {
@@ -31,7 +33,7 @@ export default defineComponent({
     const router = useRouter();
     const currentPath = computed(() => router.currentRoute.value.name);
 
-    const myPaths = [
+    const myPaths: NavItem[] = [
       {
         path: "/home",
         icon: faHome,
@@ -51,6 +53,10 @@ export default defineComponent({
       {
         path: "/items",
         icon: faMessage,
+      },
+      {
+        path: "/carousel",
+        icon: faDharmachakra,
       },
     ];
 

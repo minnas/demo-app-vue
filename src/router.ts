@@ -5,6 +5,7 @@ import Todos from "@Views/Todos.vue";
 import Posts from "@Views/Posts.vue";
 import Bookmarks from "@Views/Bookmarks.vue";
 import Items from "@Views/Items.vue";
+import Carousel from "@Views/Carousel.vue";
 
 export const routerHistory = createWebHistory("post-app");
 
@@ -41,6 +42,11 @@ export const router = createRouter({
       name: "items",
       path: "/items",
       component: Items,
+    },
+    {
+      name: "carousel",
+      path: "/carousel",
+      component: Carousel,
     },
   ],
 });

@@ -13,6 +13,7 @@ export default defineConfig({
       "@Api": path.resolve(__dirname, "./src/api"),
       "@Assets": path.resolve(__dirname, "./src/assets"),
       "@Provider": path.resolve(__dirname, "./src/provider"),
+      "@Utils": path.resolve(__dirname, "./src/utils"),
     },
   },
 });
