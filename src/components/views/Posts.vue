@@ -72,7 +72,7 @@ export default defineComponent({
     const bookmarkBtnDisabled = (id: string) => {
       if (
         (bookmarks.value as Bookmark[]).find(
-          (b: Bookmark) => b.externalId.toString() === id.toString()
+          (b: Bookmark) => b.externalId && b.externalId.toString() === id.toString()
         )
       ) {
         return true;
