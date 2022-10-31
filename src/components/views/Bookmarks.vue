@@ -86,6 +86,7 @@ export default defineComponent({
     border-bottom-left-radius: 18px;
     border-top-right-radius: 18px;
     font-size: 1.2rem;
+    animation: fadeIn 2s ease-in-out;
   }
   & .awesome-icon {
     color: var(--highlight-color);
@@ -106,6 +107,14 @@ export default defineComponent({
   }
   & .placehoder-icon {
     color: var(--highlight-color);
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 </style>

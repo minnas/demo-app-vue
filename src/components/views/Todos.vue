@@ -79,6 +79,7 @@ export default defineComponent({
     border-bottom-left-radius: 18px;
     border-top-right-radius: 18px;
     font-size: 1.2rem;
+    animation: fadeIn 2s ease-in;
   }
   & .awesome-icon {
     color: var(--highlight-color);
@@ -96,9 +97,18 @@ export default defineComponent({
     grid-column-gap: 1rem;
     font-size: 1.6rem;
     min-height: 100px;
+    animation: fadeIn 2s ease-in;
   }
   & .placehoder-icon {
     color: var(--highlight-color);
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 </style>

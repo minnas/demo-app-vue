@@ -49,6 +49,7 @@ button {
   justify-content: center;
   align-items: center;
   grid-column-gap: 1rem;
+  font-size: 1.5rem;
   &.selected {
     color: var(--highlight-color-3);
     &:hover {
@@ -65,7 +66,7 @@ button {
   }
   &:not([disabled]):hover {
     color: var(--highlight-color-5);
-    font-size: 1.2rem;
+    font-size: 1.7rem;
   }
 }
 </style>

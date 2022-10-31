@@ -1,20 +1,32 @@
 <template>
-  <div class="awesome-title-or-footer"><AwesomeHeader title="title" /></div>
-  <div class="awesome-content"><router-view></router-view></div>
-  <div class="awesome-title-or-footer"><AwesomeFooter /></div>
+  <div :style="styles" class="awesome-title-or-footer">
+    <AwesomeHeader title="title" />
+  </div>
+  <div :style="styles" class="awesome-content"><router-view></router-view></div>
+  <div :style="styles" class="awesome-title-or-footer"><AwesomeFooter /></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, inject } from "vue";
 import { default as AwesomeFooter } from "@Views/AwesomeFooter.vue";
 import { default as AwesomeHeader } from "@Views/AwesomeHeader.vue";
+import { IThemeProvider, THEME_PROVIDER_KEY } from "@Provider/provider";
+import { styles } from "@Utils/styles";
+
 export default defineComponent({
   props: {},
   components: {
     AwesomeFooter,
     AwesomeHeader,
   },
-  setup(props) {},
+  setup(props) {
+    const themeProvider = inject<IThemeProvider>(THEME_PROVIDER_KEY);
+    const mode = computed(() => themeProvider?.getCurrentTheme());
+    const daa = computed(() => styles(mode.value || "dark"));
+    return {
+      styles: daa,
+    };
+  },
 });
 </script>
 
