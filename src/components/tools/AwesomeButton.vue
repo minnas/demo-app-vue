@@ -41,7 +41,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 button {
-  color: rgba(148, 104, 254);
+  color: var(--highlight-color);
   outline: none;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -50,7 +50,7 @@ button {
   align-items: center;
   grid-column-gap: 1rem;
   &.selected {
-    color: rgba(148, 104, 254, 0.3);
+    color: var(--highlight-color-3);
     &:hover {
       cursor: not-allowed;
       border: none;
@@ -64,7 +64,7 @@ button {
     }
   }
   &:not([disabled]):hover {
-    color: rgba(148, 104, 254, 0.5);
+    color: var(--highlight-color-5);
     font-size: 1.2rem;
   }
 }

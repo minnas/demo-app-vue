@@ -198,54 +198,54 @@ export default defineComponent({
   height: 120px;
   left: 10px;
   top: 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--shadow-color);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 5.5rem;
-  color: rgba(148, 104, 254, 0.9);
+  color: var(--highlight-color-9);
   & svg {
     cursor: pointer;
     &:hover {
-      filter: drop-shadow(14px 15px 0px rgba(255, 255, 255, 0.7));
+      filter: drop-shadow(14px 15px 0px var(--shadow-color-7));
     }
   }
 }
 .carousel-item:nth-child(1) {
   transform: rotateY(0deg) translateZ(288px);
-  background-color: rgba(148, 104, 254, 0.2);
+  background-color: var(--highlight-color-2);
 }
 .carousel-item:nth-child(2) {
   transform: rotateY(40deg) translateZ(288px);
-  background-color: rgba(148, 104, 254, 0.3);
+  background-color: var(--highlight-color-3);
 }
 .carousel-item:nth-child(3) {
   transform: rotateY(80deg) translateZ(288px);
-  background-color: rgba(148, 104, 254, 0.4);
+  background-color: var(--highlight-color-4);
 }
 .carousel-item:nth-child(4) {
   transform: rotateY(120deg) translateZ(288px);
-  background-color: rgba(148, 104, 254, 0.5);
+  background-color: var(--highlight-color-5);
 }
 .carousel-item:nth-child(5) {
   transform: rotateY(160deg) translateZ(288px);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--shadow-color-1);
 }
 .carousel-item:nth-child(6) {
   transform: rotateY(200deg) translateZ(288px);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--shadow-color-2);
 }
 .carousel-item:nth-child(7) {
   transform: rotateY(240deg) translateZ(288px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--shadow-color-3);
 }
 .carousel-item:nth-child(8) {
   transform: rotateY(280deg) translateZ(288px);
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: var(--shadow-color-4);
 }
 .carousel-item:nth-child(9) {
   transform: rotateY(320deg) translateZ(288px);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--shadow-color-1);
 }
 
 .carousel-controls {
@@ -260,8 +260,8 @@ export default defineComponent({
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  color: rgba(148, 104, 254, 0.9);
-  border-bottom: 2px dashed rgba(255, 255, 255, 0.8);
+  color: var(--highlight-color-9);
+  border-bottom: 2px dashed var(--shadow-color-8);
   padding-bottom: 0.5rem;
   & svg {
     font-size: 3.5rem;

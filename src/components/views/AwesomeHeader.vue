@@ -26,30 +26,30 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, inject, ref } from "vue";
 import {
   faSnowflake,
   faSpider,
   faLightbulb,
 } from "@fortawesome/free-solid-svg-icons";
+import { IThemeProvider, THEME_PROVIDER_KEY } from "@Provider/provider";
 
 export default defineComponent({
   props: {
     title: String,
   },
   setup(props, { emit }) {
+    const themeProvider = inject<IThemeProvider>(THEME_PROVIDER_KEY);
     const spin = ref(true);
-    const lightOff = ref(false);
+    const lightOff = ref(true);
     const toggleSpin = () => {
       spin.value = !spin.value;
     };
     const toggleLight = () => {
-      lightOff.value = !lightOff.value;
-      if (lightOff.value) {
-        document.body.classList.add("light-off");
-      } else {
-        document.body.classList.remove("light-off");
-      }
+      themeProvider?.toggleTheme();
+      lightOff.value = themeProvider?.lightMode() || false;
+      document.documentElement.style.colorScheme =
+        themeProvider?.getCurrentTheme() || "dark";
     };
     return {
       faSpider,
@@ -71,19 +71,19 @@ export default defineComponent({
   align-items: center;
   grid-column-gap: 1rem;
   & .awesome-header-icon {
-    color: rgba(148, 104, 254);
+    color: var(--highlight-color);
     font-size: 3rem;
     transition: all 0.25s ease;
     &:not(.spin) {
-      filter: drop-shadow(14px 15px 0px rgba(255, 255, 255, 0.4));
+      filter: drop-shadow(14px 15px 0px var(--shadow-color-4));
       font-size: 2.6rem;
     }
     &.spider:hover {
-      filter: drop-shadow(30px 30px 0px rgba(255, 255, 255, 0.4));
+      filter: drop-shadow(30px 30px 0px var(--shadow-color-4));
     }
     &.spin:hover {
       cursor: pointer;
-      filter: drop-shadow(20px 0px 0px rgba(255, 255, 255, 0.7));
+      filter: drop-shadow(20px 0px 0px var(--shadow-color-7));
     }
   }
   & h1 {
@@ -91,18 +91,18 @@ export default defineComponent({
     line-height: 2.6rem;
     margin: 0;
     padding: 5px 0;
-    border-bottom: 4px dashed rgba(148, 104, 254, 0.6);
+    border-bottom: 4px dashed var(--highlight-color-6);
   }
   & .bottom-line {
     text-align: center;
     font-size: 1.2rem;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--shadow-color-5);
   }
   & button.awesome-lighting {
-    color: #dde066;
+    color: var(--light-on);
     &.lightOff {
-      color: #a9a9a9;
+      color: var(--light-off);
     }
   }
   & .right-side {

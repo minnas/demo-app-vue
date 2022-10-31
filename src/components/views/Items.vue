@@ -33,12 +33,12 @@ import {
   faSadTear,
   faMessage,
 } from "@fortawesome/free-solid-svg-icons";
-import { IItemStoreProvider, PROVIDER_KEY } from "@Provider/provider";
+import { IItemStoreProvider, ITEM_PROVIDER_KEY } from "@Provider/provider";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
-    const itemStoreProvider = inject<IItemStoreProvider>(PROVIDER_KEY);
+    const itemStoreProvider = inject<IItemStoreProvider>(ITEM_PROVIDER_KEY);
     const items = computed(() => itemStoreProvider?.getItems());
 
     const removeItem = (item: Item) => {
@@ -70,13 +70,13 @@ export default defineComponent({
     margin-top: 1rem;
     padding: 2rem;
     width: 80%;
-    border: 2px solid rgba(148, 104, 254, 0.4);
+    border: 2px solid var(--highlight-color-4);
     border-bottom-left-radius: 18px;
     border-top-right-radius: 18px;
     font-size: 1.2rem;
   }
   & .awesome-icon {
-    color: rgba(148, 104, 254);
+    color: var(--highlight-color);
     font-size: 1.8rem;
     opacity: 0.9;
   }
@@ -93,7 +93,7 @@ export default defineComponent({
     min-height: 100px;
   }
   & .placehoder-icon {
-    color: rgba(148, 104, 254);
+    color: var(--highlight-color);
   }
 }
 </style>

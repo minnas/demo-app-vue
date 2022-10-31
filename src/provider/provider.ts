@@ -2,7 +2,7 @@ import { Item } from "../types/types";
 import { v4 as uuidv4 } from "uuid";
 import { reactive } from "vue";
 
-const STORAGE_KEY = "awesome_items";
+const ITEM_STORAGE_KEY = "awesome_items";
 /**custom local storage provider*/
 export interface IItemStoreProvider {
   updateItem(item: Item): void;
@@ -10,10 +10,16 @@ export interface IItemStoreProvider {
   getItems(): Item[];
   addItems(items: Item[]): void;
 }
-/**Item Store */
+export interface IThemeProvider {
+  toggleTheme(): void;
+  getCurrentTheme(): string;
+  darkMode(): boolean;
+  lightMode(): boolean;
+}
+/**Store */
 const options = reactive({
   items: JSON.parse(
-    window.localStorage.getItem(STORAGE_KEY)?.toString() || "[]"
+    window.localStorage.getItem(ITEM_STORAGE_KEY)?.toString() || "[]"
   ) as Item[],
 });
 export const ItemStoreProvider: IItemStoreProvider = {
@@ -39,8 +45,25 @@ export const ItemStoreProvider: IItemStoreProvider = {
     return options.items;
   },
   addItems(items: Item[]) {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    window.localStorage.setItem(ITEM_STORAGE_KEY, JSON.stringify(items));
   },
 };
-
-export const PROVIDER_KEY = "itemStoreProvider";
+const themeOptions = reactive({
+  mode: "dark",
+});
+export const ThemeProvider: IThemeProvider = {
+  toggleTheme() {
+    themeOptions.mode = themeOptions.mode == "dark" ? "light" : "dark";
+  },
+  getCurrentTheme() {
+    return themeOptions.mode;
+  },
+  darkMode() {
+    return themeOptions.mode === "dark";
+  },
+  lightMode() {
+    return themeOptions.mode === "light";
+  },
+};
+export const ITEM_PROVIDER_KEY = "itemStoreProvider";
+export const THEME_PROVIDER_KEY = "ThemeProvider";

@@ -45,7 +45,7 @@ import { addTodo } from "@Store/react-redux/dataSlices";
 import {
   IItemStoreProvider,
   ItemStoreProvider,
-  PROVIDER_KEY,
+  ITEM_PROVIDER_KEY,
 } from "@Provider/provider";
 
 export default defineComponent({
@@ -60,7 +60,7 @@ export default defineComponent({
     const textAreaRef1 = ref();
     const textAreaRef2 = ref();
     const todos = useSelector((state) => state.todos);
-    const itemStoreProvider = inject<IItemStoreProvider>(PROVIDER_KEY);
+    const itemStoreProvider = inject<IItemStoreProvider>(ITEM_PROVIDER_KEY);
     const items = computed(() => ItemStoreProvider.getItems());
 
     const saveItem = () => {
@@ -138,7 +138,7 @@ export default defineComponent({
 }
 .todo-count,
 .item-count {
-  color: rgba(148, 104, 254);
+  color: var(--highlight-color);
   font-weight: 600;
   font-size: 1.2rem;
   margin: 0 0.25rem;

@@ -72,7 +72,8 @@ export default defineComponent({
     const bookmarkBtnDisabled = (id: string) => {
       if (
         (bookmarks.value as Bookmark[]).find(
-          (b: Bookmark) => b.externalId && b.externalId.toString() === id.toString()
+          (b: Bookmark) =>
+            b.externalId && b.externalId.toString() === id.toString()
         )
       ) {
         return true;
@@ -136,13 +137,13 @@ export default defineComponent({
     margin-top: 1rem;
     padding: 2rem;
     width: 80%;
-    border: 2px solid rgba(148, 104, 254, 0.4);
+    border: 2px solid var(--highlight-color-4);
     border-bottom-left-radius: 18px;
     border-top-right-radius: 18px;
     font-size: 1.2rem;
   }
   & .awesome-icon {
-    color: rgba(148, 104, 254);
+    color: var(--highlight-color);
     font-size: 1.8rem;
     opacity: 0.9;
   }
@@ -159,8 +160,8 @@ export default defineComponent({
     grid-column-gap: 1rem;
     font-size: 1.6rem;
     &.awesome-mgs {
-      background-color: rgba(148, 104, 254, 0.5);
-      border: 3px solid #1a1a1a;
+      background-color: var(--highlight-color-5);
+      border: 3px solid var(--border-color-dark);
       border-radius: 5px;
       position: absolute;
       width: 30vw;
@@ -168,12 +169,12 @@ export default defineComponent({
       height: 45px;
       z-index: 100;
       & span {
-        color: rgba(0, 0, 0, 0.6);
+        color: var(--color-black-6);
       }
     }
   }
   & .placehoder-icon {
-    color: rgba(148, 104, 254);
+    color: var(--highlight-color);
   }
 }
 .row-item {

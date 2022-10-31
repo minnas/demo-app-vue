@@ -30,7 +30,7 @@ export default defineComponent({
   padding: 0.5rem 0;
   margin: 0;
   align-items: center;
-  background-color: rgba(148, 104, 254, 0.1);
+  background-color: var(--highlight-color-1);
 }
 .awesome-content {
   flex: 8;
@@ -38,11 +38,5 @@ export default defineComponent({
   width: 100%;
   display: flex;
   justify-content: center;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
