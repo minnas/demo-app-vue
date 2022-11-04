@@ -17,11 +17,11 @@
         :spin="spin"
         class="awesome-header-icon spin"
       />
-      <awesome-button
+      <!--<awesome-button
         :icon="faLightbulb"
         @click="toggleLight"
         :class="['awesome-lighting', { lightOff: lightOff }]"
-      />
+      />-->
     </div>
   </div>
 </template>

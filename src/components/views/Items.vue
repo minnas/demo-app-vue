@@ -7,7 +7,7 @@
           :icon="faSadTear"
           class="placehoder-icon"
         />
-        <span>No Items here !!</span>
+        <span>{{ $t("items-placeholder") }}</span>
       </div>
       <div class="awesome-item" v-for="(item, i) of (items as Item[])" :key="i">
         <div class="awesome-display-mode">
@@ -34,13 +34,17 @@ import {
   faMessage,
 } from "@fortawesome/free-solid-svg-icons";
 import { IItemStoreProvider, ITEM_PROVIDER_KEY } from "@Provider/provider";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
     const itemStoreProvider = inject<IItemStoreProvider>(ITEM_PROVIDER_KEY);
     const items = computed(() => itemStoreProvider?.getItems());
-
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: "local",
+    });
     const removeItem = (item: Item) => {
       itemStoreProvider?.removeItem(item);
     };
@@ -51,6 +55,7 @@ export default defineComponent({
       faMessage,
       faBroom,
       faSadTear,
+      t,
     };
   },
 });

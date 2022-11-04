@@ -21,7 +21,8 @@
       "@Api/*": ["./src/api/*"],
       "@Assets/*": ["./src/assets/*"],
       "@Provider/*": ["./src/provider/*"],
-      "@Utils/*": ["./src/Utils/*"]
+      "@Utils/*": ["./src/Utils/*"],
+      "@Locale/*": ["./src/locale/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

@@ -1,4 +1,8 @@
 <template>
+  <div :style="styles" class="app-theme-tools">
+    <locale-switch />
+    <theme-switch />
+  </div>
   <div :style="styles" class="awesome-title-or-footer">
     <AwesomeHeader title="title" />
   </div>
@@ -50,5 +54,12 @@ export default defineComponent({
   width: 100%;
   display: flex;
   justify-content: center;
+}
+.app-theme-tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 </style>

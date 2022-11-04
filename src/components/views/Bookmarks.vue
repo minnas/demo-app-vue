@@ -10,7 +10,7 @@
           :icon="faUserNinja"
           class="placehoder-icon"
         />
-        <span>No bookmarks here !!</span>
+        <span>{{ t("bookmarks-placeholder") }}</span>
       </div>
       <div
         class="awesome-bookmarks-item"
@@ -46,12 +46,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispath, useSelector } from "@Store/react-redux/utils";
 import { removeBookmark } from "@Store/react-redux/dataSlices";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
     const bookmarks = useSelector((state) => state.bookmarks);
     const dispatch = useDispath();
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: "global",
+    });
 
     const remove = (bookmark: Bookmark) => {
       dispatch(removeBookmark(bookmark));
@@ -63,6 +68,7 @@ export default defineComponent({
       faBookAtlas,
       faPaintBrush,
       faUserNinja,
+      t,
     };
   },
 });

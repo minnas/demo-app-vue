@@ -3,7 +3,7 @@
     <div class="awesome-todo-list">
       <div v-if="(todos as Todo[]).length < 1" class="my-awesome-placeholder">
         <font-awesome-icon size="lg" :icon="faSadCry" class="placehoder-icon" />
-        <span>No todos here !!</span>
+        <span>{{ $t("todos-placeholder") }}</span>
       </div>
       <div
         class="awesome-todo-item"
@@ -39,13 +39,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispath, useSelector } from "@Store/react-redux/utils";
 import { removeTodo } from "@Store/react-redux/dataSlices";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
     const todos = useSelector((state) => state.todos);
     const dispatch = useDispath();
-
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: "local",
+    });
     const remove = (todo: Todo) => {
       dispatch(removeTodo(todo));
     };
@@ -56,6 +60,7 @@ export default defineComponent({
       faStickyNote,
       faBroom,
       faSadCry,
+      t,
     };
   },
 });

@@ -14,6 +14,7 @@ export default defineConfig({
       "@Assets": path.resolve(__dirname, "./src/assets"),
       "@Provider": path.resolve(__dirname, "./src/provider"),
       "@Utils": path.resolve(__dirname, "./src/utils"),
+      "@Locale": path.resolve(__dirname, "./src/locale"),
     },
   },
 });
