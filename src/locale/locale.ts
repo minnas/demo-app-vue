@@ -12,3 +12,4 @@ export const i18n = createI18n({
     fi: fiFI,
   },
 });
+export const t = i18n.global.t;

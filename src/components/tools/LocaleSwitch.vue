@@ -17,14 +17,11 @@
         {{ option.label }}
       </option>
     </select>
-    <div class="selected-option">
-      {{ dummyOptions.find((d) => d.id === dummyValue)?.label }}
-    </div>
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
-import { dummyOptions, DummyOption } from "@Locale/utils";
+import { defineComponent, ref } from "vue";
+import { dummyOptions } from "@Locale/utils";
 
 export default defineComponent({
   props: {},
@@ -73,10 +70,5 @@ export default defineComponent({
   color: var(--highlight-color);
   padding: 0.25rem;
   font-weight: 600;
-}
-.selected-option {
-  color: var(--highlight-color);
-  font-weight: 600;
-  font-size: 1.6rem;
 }
 </style>
