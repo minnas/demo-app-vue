@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, inject } from "vue";
+import { defineComponent, inject } from "vue";
 import { IThemeProvider, THEME_PROVIDER_KEY } from "@Provider/provider";
 import { faMagicWandSparkles } from "@fortawesome/free-solid-svg-icons";
 
@@ -44,7 +44,11 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     border: none;
+    font-size: 2rem;
     background-color: transparent;
+    &:hover {
+      transform: rotate(-90deg);
+    }
   }
 }
 </style>

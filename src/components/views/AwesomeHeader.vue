@@ -6,8 +6,8 @@
       class="awesome-header-icon spider"
     />
     <div>
-      <h1>One small Demo App</h1>
-      <div class="bottom-line">(start/stop snowflake by click)</div>
+      <h1>{{ $t("vue-demo-app-title") }}</h1>
+      <div class="bottom-line">{{ $t("vue-demo-app-bottom-line") }}</div>
     </div>
     <div class="right-side">
       <font-awesome-icon

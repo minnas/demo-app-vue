@@ -70,5 +70,8 @@ export default defineComponent({
   color: var(--highlight-color);
   padding: 0.25rem;
   font-weight: 600;
+  appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
 }
 </style>

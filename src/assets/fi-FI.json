@@ -4,5 +4,9 @@
   "bookmarks-placeholder": "Ei kirjanmerkkejä !!",
   "option-1": "Eka Option",
   "option-2": "Toka Option",
-  "option-3": "Kolmas Option"
+  "option-3": "Kolmas Option",
+  "vue-demo-app-title": "Yksi pieni Demo App",
+  "vue-demo-app-bottom-line": "(lumihiutale klikkaamalla päälle/pois)",
+  "loading-placeholder-mgs": "Ladataan ...",
+  "post-to-bookmarks-mgs": "Lisätty kirjanmerkkeihin"
 }

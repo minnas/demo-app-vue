@@ -4,5 +4,7 @@
   "bookmarks-placeholder": "No bookmarks here !!",
   "option-1": "First Option",
   "option-2": "Second Option",
-  "option-3": "Third Option"
+  "option-3": "Third Option",
+  "vue-demo-app-title": "One small Demo App",
+  "vue-demo-app-bottom-line": "(start/stop snowflake by click)"
 }

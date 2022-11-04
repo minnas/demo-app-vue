@@ -4,7 +4,6 @@
       <awesome-button
         @click="gotoBookmarks"
         :icon="faBookAtlas"
-        label="Goto Bookmarks"
         v-if="!loading"
       />
     </div>
@@ -16,11 +15,11 @@
           :spin="true"
           class="placehoder-icon"
         />
-        <span>Loading ...</span>
+        <span>{{ $t("loading-placeholder-mgs") }}</span>
       </div>
       <div class="my-awesome-placeholder awesome-mgs" v-show="bookmarkAdded">
         <font-awesome-icon size="lg" :icon="faCheck" class="placehoder-icon" />
-        <span>Added to bookmarks</span>
+        <span>{{ $t("post-to-bookmarks-mgs") }}</span>
       </div>
       <div class="awesome-post-item" v-for="(item, i) of posts" :key="i">
         <div class="awesome-display-mode">
