@@ -17,48 +17,27 @@
         :spin="spin"
         class="awesome-header-icon spin"
       />
-      <!--<awesome-button
-        :icon="faLightbulb"
-        @click="toggleLight"
-        :class="['awesome-lighting', { lightOff: lightOff }]"
-      />-->
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, inject, ref } from "vue";
-import {
-  faSnowflake,
-  faSpider,
-  faLightbulb,
-} from "@fortawesome/free-solid-svg-icons";
-import { IThemeProvider, THEME_PROVIDER_KEY } from "@Provider/provider";
+import { defineComponent, ref } from "vue";
+import { faSnowflake, faSpider } from "@fortawesome/free-solid-svg-icons";
 
 export default defineComponent({
   props: {
     title: String,
   },
   setup(props, { emit }) {
-    const themeProvider = inject<IThemeProvider>(THEME_PROVIDER_KEY);
     const spin = ref(true);
-    const lightOff = ref(true);
     const toggleSpin = () => {
       spin.value = !spin.value;
-    };
-    const toggleLight = () => {
-      themeProvider?.toggleTheme();
-      lightOff.value = themeProvider?.lightMode() || false;
-      document.documentElement.style.colorScheme =
-        themeProvider?.getCurrentTheme() || "dark";
     };
     return {
       faSpider,
       faSnowflake,
       spin,
       toggleSpin,
-      faLightbulb,
-      lightOff,
-      toggleLight,
     };
   },
 });

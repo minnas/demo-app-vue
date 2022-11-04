@@ -7,7 +7,7 @@
           :icon="faSadTear"
           class="placehoder-icon"
         />
-        <span>{{ $t("items-placeholder") }}</span>
+        <span>{{ t("items-placeholder") }}</span>
       </div>
       <div class="awesome-item" v-for="(item, i) of (items as Item[])" :key="i">
         <div class="awesome-display-mode">

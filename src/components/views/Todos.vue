@@ -3,7 +3,7 @@
     <div class="awesome-todo-list">
       <div v-if="(todos as Todo[]).length < 1" class="my-awesome-placeholder">
         <font-awesome-icon size="lg" :icon="faSadCry" class="placehoder-icon" />
-        <span>{{ $t("todos-placeholder") }}</span>
+        <span>{{ t("todos-placeholder") }}</span>
       </div>
       <div
         class="awesome-todo-item"

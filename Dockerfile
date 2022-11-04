@@ -14,5 +14,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 RUN yarn build
 
-#RUN yarn build
 CMD ["yarn", "dev"]
