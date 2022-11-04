@@ -6,8 +6,8 @@
       class="awesome-header-icon spider"
     />
     <div>
-      <h1>{{ $t("vue-demo-app-title") }}</h1>
-      <div class="bottom-line">{{ $t("vue-demo-app-bottom-line") }}</div>
+      <h1>{{ t("vue-demo-app-title") }}</h1>
+      <div class="bottom-line">{{ t("vue-demo-app-bottom-line") }}</div>
     </div>
     <div class="right-side">
       <font-awesome-icon
@@ -23,6 +23,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { faSnowflake, faSpider } from "@fortawesome/free-solid-svg-icons";
+import { t } from "@Locale/locale";
 
 export default defineComponent({
   props: {
@@ -38,6 +39,7 @@ export default defineComponent({
       faSnowflake,
       spin,
       toggleSpin,
+      t,
     };
   },
 });

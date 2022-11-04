@@ -15,11 +15,11 @@
           :spin="true"
           class="placehoder-icon"
         />
-        <span>{{ $t("loading-placeholder-mgs") }}</span>
+        <span>{{ t("loading-placeholder-mgs") }}</span>
       </div>
       <div class="my-awesome-placeholder awesome-mgs" v-show="bookmarkAdded">
         <font-awesome-icon size="lg" :icon="faCheck" class="placehoder-icon" />
-        <span>{{ $t("post-to-bookmarks-mgs") }}</span>
+        <span>{{ t("post-to-bookmarks-mgs") }}</span>
       </div>
       <div class="awesome-post-item" v-for="(item, i) of posts" :key="i">
         <div class="awesome-display-mode">
@@ -57,7 +57,7 @@ import { search } from "@Api/api";
 import { useRouter } from "vue-router";
 import { useDispath, useSelector } from "@Store/react-redux/utils";
 import { addBookmark } from "@Store/react-redux/dataSlices";
-
+import { t } from "@Locale/locale";
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
@@ -117,6 +117,7 @@ export default defineComponent({
       gotoBookmarks,
       faExclamation,
       bookmarkBtnDisabled,
+      t,
     };
   },
 });
