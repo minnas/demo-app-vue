@@ -12,16 +12,29 @@
     >
       {{ loc.toLocaleUpperCase() }}
     </button>
+    <select name="option" class="some-select-test" v-model="dummyValue">
+      <option v-for="(option, i) of dummyOptions" :value="option.id">
+        {{ option.label }}
+      </option>
+    </select>
+    <div class="selected-option">
+      {{ dummyOptions.find((d) => d.id === dummyValue)?.label }}
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
+import { dummyOptions, DummyOption } from "@Locale/utils";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const dummyValue = ref(dummyOptions.value.at(0)?.id as string);
+
     return {
       locales: ["en", "fi"],
+      dummyOptions,
+      dummyValue,
     };
   },
 });
@@ -51,5 +64,19 @@ export default defineComponent({
   &.selected {
     border-bottom: 2px solid var(--highlight-color);
   }
+}
+.some-select-test {
+  border: 2px solid var(--highlight-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--highlight-color);
+  padding: 0.25rem;
+  font-weight: 600;
+}
+.selected-option {
+  color: var(--highlight-color);
+  font-weight: 600;
+  font-size: 1.6rem;
 }
 </style>

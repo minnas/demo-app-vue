@@ -1,5 +1,8 @@
 {
   "todos-placeholder": "No todos here !!",
   "items-placeholder": "No items here !!",
-  "bookmarks-placeholder": "No bookmarks here !!"
+  "bookmarks-placeholder": "No bookmarks here !!",
+  "option-1": "First Option",
+  "option-2": "Second Option",
+  "option-3": "Third Option"
 }

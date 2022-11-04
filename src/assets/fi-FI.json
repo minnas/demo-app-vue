@@ -1,5 +1,8 @@
 {
   "todos-placeholder": "Ei tehtäviä !!",
   "items-placeholder": "Ei asioita !!",
-  "bookmarks-placeholder": "Ei kirjanmerkkejä !!"
+  "bookmarks-placeholder": "Ei kirjanmerkkejä !!",
+  "option-1": "Eka Option",
+  "option-2": "Toka Option",
+  "option-3": "Kolmas Option"
 }
