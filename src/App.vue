@@ -1,13 +1,14 @@
 <template>
   <div :style="styles" class="app-theme-tools">
     <locale-switch />
-    <theme-switch />
   </div>
   <div :style="styles" class="awesome-title-or-footer">
     <AwesomeHeader title="title" />
   </div>
   <div :style="styles" class="awesome-content"><router-view></router-view></div>
-  <div :style="styles" class="awesome-title-or-footer"><AwesomeFooter /></div>
+  <div :style="styles" class="awesome-title-or-footer only-footer">
+    <AwesomeFooter />
+  </div>
 </template>
 
 <script lang="ts">
@@ -41,19 +42,23 @@ export default defineComponent({
   will-change: filter;
 }
 .awesome-title-or-footer {
-  flex: 1;
   width: 100%;
   padding: 0.5rem 0;
   margin: 0;
   align-items: center;
   background-color: var(--highlight-color-1);
 }
+.only-footer {
+  margin-top: auto;
+}
 .awesome-content {
-  flex: 8;
   overflow: scroll;
   width: 100%;
   display: flex;
   justify-content: center;
+  scrollbar-color: var(--highlight-color) var(--shadow-color-6);
+  scrollbar-width: thin;
+  padding-top: 2rem;
 }
 .app-theme-tools {
   display: flex;

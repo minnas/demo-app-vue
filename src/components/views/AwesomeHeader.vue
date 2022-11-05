@@ -7,22 +7,14 @@
     />
     <div>
       <h1>{{ t("vue-demo-app-title") }}</h1>
-      <div class="bottom-line">{{ t("vue-demo-app-bottom-line") }}</div>
     </div>
-    <div class="right-side">
-      <font-awesome-icon
-        :icon="faSnowflake"
-        size="lg"
-        @click="toggleSpin"
-        :spin="spin"
-        class="awesome-header-icon spin"
-      />
-    </div>
+    <theme-switch />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { faSnowflake, faSpider } from "@fortawesome/free-solid-svg-icons";
+import { defineComponent } from "vue";
+import { faSpider } from "@fortawesome/free-solid-svg-icons";
+
 import { useI18n } from "vue-i18n";
 
 export default defineComponent({
@@ -31,15 +23,8 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const { t } = useI18n();
-    const spin = ref(true);
-    const toggleSpin = () => {
-      spin.value = !spin.value;
-    };
     return {
       faSpider,
-      faSnowflake,
-      spin,
-      toggleSpin,
       t,
     };
   },
@@ -49,7 +34,7 @@ export default defineComponent({
 .awesome-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   grid-column-gap: 1rem;
   & .awesome-header-icon {
@@ -63,10 +48,6 @@ export default defineComponent({
     &.spider:hover {
       filter: drop-shadow(30px 30px 0px var(--shadow-color-4));
     }
-    &.spin:hover {
-      cursor: pointer;
-      filter: drop-shadow(20px 0px 0px var(--shadow-color-7));
-    }
   }
   & h1 {
     font-size: 2.5rem;
@@ -74,6 +55,7 @@ export default defineComponent({
     margin: 0;
     padding: 5px 0;
     border-bottom: 4px dashed var(--highlight-color-6);
+    color: var(--highlight-color);
   }
   & .bottom-line {
     text-align: center;

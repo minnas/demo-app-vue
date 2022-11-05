@@ -1,4 +1,12 @@
-import { CarouselSlice } from "@Types/types";
+import {
+  faBook,
+  faBookmark,
+  faDharmachakra,
+  faHome,
+  faMessage,
+  faStickyNote,
+} from "@fortawesome/free-solid-svg-icons";
+import { CarouselSlice, NavItem } from "@Types/types";
 
 export const carouselSlices = (
   width: number,
@@ -17,3 +25,46 @@ export const carouselSlices = (
     } as CarouselSlice;
   });
 };
+
+export const slides: NavItem[] = [
+  {
+    path: "/home",
+    icon: faHome,
+  },
+  {
+    path: "/todos",
+    icon: faStickyNote,
+  },
+  {
+    path: "/posts",
+    icon: faBook,
+  },
+  {
+    path: "/bookmarks",
+    icon: faBookmark,
+  },
+  {
+    path: "/items",
+    icon: faMessage,
+  },
+  {
+    path: "/home",
+    icon: faHome,
+  },
+  {
+    path: "/todos",
+    icon: faStickyNote,
+  },
+  {
+    path: "/posts",
+    icon: faBook,
+  },
+  {
+    path: "/bookmarks",
+    icon: faBookmark,
+  },
+  {
+    path: "/carousel",
+    icon: faDharmachakra,
+  },
+];

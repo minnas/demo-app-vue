@@ -46,6 +46,8 @@ export default defineComponent({
     border: none;
     font-size: 2rem;
     background-color: transparent;
+    padding: 0;
+    margin: 0;
     &:hover {
       transform: rotate(-90deg);
     }

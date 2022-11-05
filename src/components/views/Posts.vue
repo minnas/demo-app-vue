@@ -1,12 +1,5 @@
 <template>
   <div class="awesome-posts">
-    <div class="row-item">
-      <awesome-button
-        @click="gotoBookmarks"
-        :icon="faBookAtlas"
-        v-if="!loading"
-      />
-    </div>
     <div class="awesome-post-list">
       <div v-if="loading && posts.length < 1" class="my-awesome-placeholder">
         <font-awesome-icon
@@ -50,7 +43,6 @@ import {
   faBookmark,
   faSpinner,
   faCheck,
-  faBookAtlas,
   faExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import { search } from "@Api/api";
@@ -58,6 +50,7 @@ import { useRouter } from "vue-router";
 import { useDispath, useSelector } from "@Store/react-redux/utils";
 import { addBookmark } from "@Store/react-redux/dataSlices";
 import { useI18n } from "vue-i18n";
+
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
@@ -101,21 +94,15 @@ export default defineComponent({
         });
     });
 
-    const gotoBookmarks = () => {
-      router.push("/bookmarks");
-    };
-
     return {
       add,
       faBookOpen,
       faBookmark,
       faSpinner,
       faCheck,
-      faBookAtlas,
       bookmarkAdded,
       loading,
       posts,
-      gotoBookmarks,
       faExclamation,
       bookmarkBtnDisabled,
       t,
@@ -177,10 +164,5 @@ export default defineComponent({
   & .placehoder-icon {
     color: var(--highlight-color);
   }
-}
-.row-item {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 </style>

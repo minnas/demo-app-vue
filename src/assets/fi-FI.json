@@ -8,5 +8,6 @@
   "vue-demo-app-title": "Pieni Demo Appis",
   "vue-demo-app-bottom-line": "(klikkaa lumihiutale päälle/pois)",
   "loading-placeholder-mgs": "Ladataan ...",
-  "post-to-bookmarks-mgs": "Lisätty kirjanmerkkeihin"
+  "post-to-bookmarks-mgs": "Lisätty kirjanmerkkeihin",
+  "carousel-page-title": "Karuselli"
 }

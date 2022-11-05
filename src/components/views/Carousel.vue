@@ -7,26 +7,32 @@
         @click="spinMe"
         :spin="isSpinning"
       />
-      <span>Page Carousel</span>
+      <span>{{ t("carousel-page-title") }}</span>
     </div>
-    <div class="my-scene">
-      <div class="carousel" ref="carouselRef">
-        <div
-          class="carousel-item"
-          v-for="(item, i) of awesomeCarousel"
-          :key="i"
-        >
-          <font-awesome-icon
-            :icon="item.data?.icon"
-            size="lg"
-            @click="goWhereYouLike(item.data?.path)"
-          />
+    <div class="my-content">
+      <div class="my-scene">
+        <div class="carousel" ref="carouselRef">
+          <div
+            class="carousel-item"
+            v-for="(item, i) of awesomeCarousel"
+            :key="i"
+          >
+            <font-awesome-icon
+              :icon="item.data?.icon"
+              size="lg"
+              @click="goWhereYouLike(item.data?.path)"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="carousel-controls">
-      <awesome-button :type="myBtnType" :icon="faArrowLeft" @click="goLeft" />
-      <awesome-button :type="myBtnType" :icon="faArrowRight" @click="goRight" />
+      <div class="carousel-controls">
+        <awesome-button :type="myBtnType" :icon="faArrowLeft" @click="goLeft" />
+        <awesome-button
+          :type="myBtnType"
+          :icon="faArrowRight"
+          @click="goRight"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -34,24 +40,21 @@
 import { defineComponent, computed, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import {
-  faHome,
-  faStickyNote,
-  faBook,
-  faBookmark,
-  faMessage,
   faDharmachakra,
   faArrowLeft,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "@Tools/settings";
-import { carouselSlices } from "@Utils/carousel";
+import { carouselSlices, slides } from "@Utils/carousel";
 import { CarouselSlice, NavItem } from "@Types/types";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {
     text: String,
   },
   setup(props, { emit }) {
+    const { t } = useI18n();
     const router = useRouter();
     const carouselRef = ref();
     const isSpinning = ref(false);
@@ -85,57 +88,14 @@ export default defineComponent({
       }
     };
 
-    const myPaths: NavItem[] = [
-      {
-        path: "/home",
-        icon: faHome,
-      },
-      {
-        path: "/todos",
-        icon: faStickyNote,
-      },
-      {
-        path: "/posts",
-        icon: faBook,
-      },
-      {
-        path: "/bookmarks",
-        icon: faBookmark,
-      },
-      {
-        path: "/items",
-        icon: faMessage,
-      },
-      {
-        path: "/home",
-        icon: faHome,
-      },
-      {
-        path: "/todos",
-        icon: faStickyNote,
-      },
-      {
-        path: "/posts",
-        icon: faBook,
-      },
-      {
-        path: "/bookmarks",
-        icon: faBookmark,
-      },
-      {
-        path: "/carousel",
-        icon: faDharmachakra,
-      },
-    ];
-
     const awesomeCarousel: CarouselSlice[] = carouselSlices(
       210,
       140,
-      myPaths.length
+      slides.length
     ).map((s: CarouselSlice, index) => {
       return {
         ...s,
-        data: myPaths[index],
+        data: slides[index],
       };
     });
 
@@ -150,7 +110,6 @@ export default defineComponent({
 
     return {
       goWhereYouLike,
-      myPaths,
       router,
       currentPath,
       awesomeCarousel,
@@ -163,6 +122,7 @@ export default defineComponent({
       goRight,
       spinMe,
       isSpinning,
+      t,
     };
   },
 });
@@ -171,9 +131,10 @@ export default defineComponent({
 .awesome-carousel {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 
 .my-scene {
@@ -257,11 +218,12 @@ export default defineComponent({
 }
 .carousel-title {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  grid-column-gap: 1rem;
   width: 100%;
   color: var(--highlight-color-9);
-  border-bottom: 2px dashed var(--shadow-color-8);
+  border-bottom: 2px dashed var(--highlight-color-6);
   padding-bottom: 0.5rem;
   & svg {
     font-size: 3.5rem;
@@ -271,5 +233,11 @@ export default defineComponent({
     font-size: 2rem;
     font-style: italic;
   }
+}
+.my-content {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 1rem;
+  padding-top: 2rem;
 }
 </style>
