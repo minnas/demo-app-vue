@@ -14,7 +14,7 @@
     </button>
     <select name="option" class="some-select-test" v-model="dummyValue">
       <option v-for="(option, i) of dummyOptions" :value="option.id">
-        {{ option.label }}
+        {{ t(option.id) }}
       </option>
     </select>
   </div>
@@ -22,16 +22,19 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { dummyOptions } from "@Locale/utils";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const { t } = useI18n();
     const dummyValue = ref(dummyOptions.value.at(0)?.id as string);
 
     return {
       locales: ["en", "fi"],
       dummyOptions,
       dummyValue,
+      t,
     };
   },
 });

@@ -23,13 +23,14 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { faSnowflake, faSpider } from "@fortawesome/free-solid-svg-icons";
-import { t } from "@Locale/locale";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {
     title: String,
   },
   setup(props, { emit }) {
+    const { t } = useI18n();
     const spin = ref(true);
     const toggleSpin = () => {
       spin.value = !spin.value;

@@ -39,12 +39,9 @@ import { useI18n } from "vue-i18n";
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const { t } = useI18n();
     const itemStoreProvider = inject<IItemStoreProvider>(ITEM_PROVIDER_KEY);
     const items = computed(() => itemStoreProvider?.getItems());
-    const { t } = useI18n({
-      inheritLocale: true,
-      useScope: "local",
-    });
     const removeItem = (item: Item) => {
       itemStoreProvider?.removeItem(item);
     };

@@ -51,12 +51,9 @@ import { useI18n } from "vue-i18n";
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const { t } = useI18n();
     const bookmarks = useSelector((state) => state.bookmarks);
     const dispatch = useDispath();
-    const { t } = useI18n({
-      inheritLocale: true,
-      useScope: "global",
-    });
 
     const remove = (bookmark: Bookmark) => {
       dispatch(removeBookmark(bookmark));

@@ -44,12 +44,9 @@ import { useI18n } from "vue-i18n";
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const { t } = useI18n();
     const todos = useSelector((state) => state.todos);
     const dispatch = useDispath();
-    const { t } = useI18n({
-      inheritLocale: true,
-      useScope: "local",
-    });
     const remove = (todo: Todo) => {
       dispatch(removeTodo(todo));
     };

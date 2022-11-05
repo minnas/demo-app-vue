@@ -57,10 +57,11 @@ import { search } from "@Api/api";
 import { useRouter } from "vue-router";
 import { useDispath, useSelector } from "@Store/react-redux/utils";
 import { addBookmark } from "@Store/react-redux/dataSlices";
-import { t } from "@Locale/locale";
+import { useI18n } from "vue-i18n";
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const { t } = useI18n();
     const bookmarkAdded = ref(false);
     const posts = ref([] as Item[]);
     const loading = ref(true);
