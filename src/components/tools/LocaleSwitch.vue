@@ -20,16 +20,23 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { dummyOptions } from "@Locale/utils";
+import { computed, defineComponent, ref } from "vue";
 import { useI18n } from "vue-i18n";
+import { Option } from "@Types/types";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
     const { t } = useI18n();
+    const dummyOptions = computed(
+      () =>
+        <Option[]>(
+          [{ id: "option-1" }, { id: "option-2" }, { id: "option-3" }].map(
+            (item) => ({ ...item, label: t(item.id) })
+          )
+        )
+    );
     const dummyValue = ref(dummyOptions.value.at(0)?.id as string);
-
     return {
       locales: ["en", "fi"],
       dummyOptions,

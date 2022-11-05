@@ -34,3 +34,8 @@ export type CarouselSlice = {
   theta: number;
   data?: NavItem;
 };
+
+export type Option = {
+  id: string;
+  label?: string;
+};
