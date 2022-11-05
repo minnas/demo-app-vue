@@ -6,5 +6,7 @@
   "option-2": "Second Option",
   "option-3": "Third Option",
   "vue-demo-app-title": "One small Demo App",
-  "vue-demo-app-bottom-line": "(start/stop snowflake by click)"
+  "vue-demo-app-bottom-line": "(start/stop snowflake by click)",
+  "loading-placeholder-mgs": "Loading...",
+  "post-to-bookmarks-mgs": "Added to bookmarks"
 }
