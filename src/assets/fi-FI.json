@@ -5,8 +5,8 @@
   "option-1": "Eka Option",
   "option-2": "Toka Option",
   "option-3": "Kolmas Option",
-  "vue-demo-app-title": "Yksi pieni Demo App",
-  "vue-demo-app-bottom-line": "(lumihiutale klikkaamalla päälle/pois)",
+  "vue-demo-app-title": "Pieni Demo Appis",
+  "vue-demo-app-bottom-line": "(klikkaa lumihiutale päälle/pois)",
   "loading-placeholder-mgs": "Ladataan ...",
   "post-to-bookmarks-mgs": "Lisätty kirjanmerkkeihin"
 }

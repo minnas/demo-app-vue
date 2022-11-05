@@ -3,12 +3,8 @@
     <button
       v-for="(loc, i) of locales"
       :key="i"
-      @click="
-        () => {
-          $i18n.locale = loc;
-        }
-      "
-      :class="['locale-btn', { selected: $i18n.locale == loc }]"
+      @click="changeLocale(loc)"
+      :class="['locale-btn', { selected: selected(loc) }]"
     >
       {{ loc.toLocaleUpperCase() }}
     </button>
@@ -27,7 +23,16 @@ import { Option } from "@Types/types";
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
-    const { t } = useI18n();
+    const { t, locale } = useI18n();
+
+    const changeLocale = (loc: string) => {
+      locale.value = loc;
+    };
+
+    const selected = (loc: string) => {
+      return locale.value === loc;
+    };
+
     const dummyOptions = computed(
       () =>
         <Option[]>(
@@ -36,11 +41,14 @@ export default defineComponent({
           )
         )
     );
+
     const dummyValue = ref(dummyOptions.value.at(0)?.id as string);
     return {
       locales: ["en", "fi"],
       dummyOptions,
       dummyValue,
+      changeLocale,
+      selected,
       t,
     };
   },
