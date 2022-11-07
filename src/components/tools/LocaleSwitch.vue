@@ -32,7 +32,6 @@ export default defineComponent({
 
     const changeLocale = (loc: string) => {
       locale.value = loc;
-      localStorage.setItem("current-locale", loc);
     };
 
     const selected = (loc: string) => {
