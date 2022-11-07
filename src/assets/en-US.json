@@ -9,5 +9,6 @@
   "vue-demo-app-bottom-line": "(start/stop snowflake by click)",
   "loading-placeholder-mgs": "Loading...",
   "post-to-bookmarks-mgs": "Added to bookmarks",
-  "carousel-page-title": "Page Carousel"
+  "carousel-page-title": "Page Carousel",
+  "home-todo-btn-label": "Goto Todos"
 }

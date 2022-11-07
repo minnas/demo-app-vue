@@ -9,5 +9,6 @@
   "vue-demo-app-bottom-line": "(klikkaa lumihiutale päälle/pois)",
   "loading-placeholder-mgs": "Ladataan ...",
   "post-to-bookmarks-mgs": "Lisätty kirjanmerkkeihin",
-  "carousel-page-title": "Karuselli"
+  "carousel-page-title": "Karuselli",
+  "home-todo-btn-label": "Tehtäviin"
 }

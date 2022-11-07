@@ -8,6 +8,11 @@
     >
       {{ loc.toLocaleUpperCase() }}
     </button>
+    <select name="option" class="some-select-test" v-model="currentLocale">
+      <option v-for="(loc, i) of locales" :value="loc">
+        {{ loc.toLocaleUpperCase() }}
+      </option>
+    </select>
     <select name="option" class="some-select-test" v-model="dummyValue">
       <option v-for="(option, i) of dummyOptions" :value="option.id">
         {{ t(option.id) }}
@@ -16,7 +21,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { Option } from "@Types/types";
 
@@ -27,6 +32,7 @@ export default defineComponent({
 
     const changeLocale = (loc: string) => {
       locale.value = loc;
+      localStorage.setItem("current-locale", loc);
     };
 
     const selected = (loc: string) => {
@@ -42,6 +48,21 @@ export default defineComponent({
         )
     );
 
+    const currentLocale = computed({
+      set(value) {
+        locale.value = value as string;
+      },
+      get() {
+        return locale.value;
+      },
+    });
+
+    watch(currentLocale, (value) => {
+      if (value) {
+        localStorage.setItem("current-locale", value as string);
+      }
+    });
+
     const dummyValue = ref(dummyOptions.value.at(0)?.id as string);
     return {
       locales: ["en", "fi"],
@@ -50,6 +71,7 @@ export default defineComponent({
       changeLocale,
       selected,
       t,
+      currentLocale,
     };
   },
 });

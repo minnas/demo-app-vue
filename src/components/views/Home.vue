@@ -30,7 +30,7 @@
       <awesome-button
         @click="gotoTodos"
         :icon="faArrowRight"
-        label="Goto Todos"
+        :label="t('home-todo-btn-label')"
       />
     </div>
   </div>
@@ -47,10 +47,12 @@ import {
   ItemStoreProvider,
   ITEM_PROVIDER_KEY,
 } from "@Provider/provider";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   props: {},
   setup(props, { emit }) {
+    const { t } = useI18n();
     const dispatch = useDispath();
     const router = useRouter();
     const options = reactive({
@@ -102,6 +104,7 @@ export default defineComponent({
     };
 
     return {
+      t,
       add,
       gotoTodos,
       faPlus,
