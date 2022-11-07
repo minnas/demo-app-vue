@@ -8,7 +8,7 @@
     >
       {{ loc.toLocaleUpperCase() }}
     </button>
-    <select name="option" class="some-select-test" v-model="currentLocale">
+    <select name="option" class="some-select-test" v-model="locale">
       <option v-for="(loc, i) of locales" :value="loc">
         {{ loc.toLocaleUpperCase() }}
       </option>
@@ -48,16 +48,7 @@ export default defineComponent({
         )
     );
 
-    const currentLocale = computed({
-      set(value) {
-        locale.value = value as string;
-      },
-      get() {
-        return locale.value;
-      },
-    });
-
-    watch(currentLocale, (value) => {
+    watch(locale, (value) => {
       if (value) {
         localStorage.setItem("current-locale", value as string);
       }
@@ -71,7 +62,7 @@ export default defineComponent({
       changeLocale,
       selected,
       t,
-      currentLocale,
+      locale,
     };
   },
 });
