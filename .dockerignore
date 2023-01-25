@@ -1,8 +1,12 @@
-node_modules
-data
-.npmrc
+.vscode
 
-**/node_modules
-**/dist
-**/data
-**/coverage
+node_modules
+
+.git
+
+.prettierrc
+.pretieriignore
+
+README.md
+
+Dockerfile
