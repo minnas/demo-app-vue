@@ -18,5 +18,6 @@ To start, run these commands
 
 Or in Docker 🐳
 
-1. docker compose up
-2. open http://localhost:3000/ in browser
+1. docker build -t demo-app-vue .
+2. docker run -d --rm -p 3000:3000 --name demo-app-vue demo-app-vue
+3. open http://localhost:3000/ in browser
